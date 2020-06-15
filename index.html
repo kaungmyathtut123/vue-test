@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueIntro</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="nav-bar"></div>
+	<div id="app">
+		<h1 style="text-align:center">{{title}}</h1>
+		<p v-show="sale">On Sale!</p>
+		<p v-if="inStock">in stock</p>
+		<p v-if="!inStock" :class="{sold_out:!inStock}">out of stock</p>
+		<p v-if="inventory>10">In Stock</p>
+		<p v-else-if="inventory<=10 && inventory>0">Almost sold out</p>
+		<p v-else>Out of Stock</p>
+		<div class="product">
+			<img style="width:100px;height: 100px" v-bind:src="image" v-bind:alt="description" v-bind:href="link">
+			<a v-bind:href="link">Attribute Binding</a>
+		</div>		
+		<ul>
+			<li v-for="detail in details">{{detail}}</li>
+		</ul>	
+		<!-- <div v-for="variant in variants" :key="variant.variantId">
+			<p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+		</div>	 -->
+		<br><br>
+		<h4 v-for="variant in variants" :key="variant.variantId"  class="color-box" :style="{backgroundColor:variant.variantColor}"  @mouseover="updateProduct(variant.variantImage)">			
+			{{variant.variantSock}}
+		</h4>
+		<br><br>
+		<!-- <h4 v-for="(variant,index) in variants" :key="variant.variantId"  class="color-box" :style="{backgroundColor:variant.variantColor}"  @mouseover="updateImage(index)">
+			 v-for="variant/(variant,index)" variant.variantImage,index  for@mouseover
+			{{variant.variantColor}}
+		</h4> -->
+		<!-- <br><br> -->
+		<button v-on:click="addToCart" :disabled="!inStock" :class="{disabledButton:! inStock}">Add To Cart</button>Cart({{cart}})	
+		<br><br>
+		<button v-on:click="RemoveToCart">Remove To Cart</button>		
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.color-box{
+	display:block;
+	width:90px;
+	padding: 10px;
+	text-align: center;
+	background-color: yellow;
+	cursor:pointer;
+	color:white;
+}
+
+.disabledButton{
+	background-color: skyblue;
+	color:black;
+	padding: 10px;
+}
+
+.sold_out{
+	text-decoration: line-through;
+}
